@@ -296,8 +296,8 @@ class Player:
 
 # Entry point for manager and player
 if __name__ == "__main__":
-    manager = Manager(5000)
-    player = Player("localhost", 5000, "Player1", 6000, 7000, 8000)
+    manager = Manager(44000, 44499)  # Specify the desired port range
+    player = Player("localhost", 5000, "Player1", manager.get_next_available_port(), manager.get_next_available_port(), manager.get_next_available_port())
 
     # Start the manager and player functionality by calling their respective run methods
     manager.run()
