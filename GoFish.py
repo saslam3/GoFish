@@ -3,11 +3,21 @@ import socket
 
 # Define the manager class
 class Manager:
-    def __init__(self, port):
-        self.port = port
+    def __init__(self, port_range_start, port_range_end):
+        self.port_range_start = port_range_start
+        self.port_range_end = port_range_end
         self.players = []
         self.deck = self.initialize_deck()  # Initialize a deck of cards
+        self.current_port = port_range_start
 
+    def get_next_available_port(self):
+        # Get the next available port within the specified range
+        if self.current_port <= self.port_range_end:
+            port = self.current_port
+            self.current_port += 1
+            return port
+        else:
+            return None
 
     def register_player(self, player_name, player_address, m_port, r_port, p_port):
         # Implement player registration logic here
